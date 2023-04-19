@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Fibonacci {
+    public static void main(String[] args) {
+        int num;
+        Scanner input = new Scanner(System.in);
+        System.out.print("Digite um número inteiro positivo: ");
+        num = input.nextInt();
+        input.close();
+        if (verificarFibonacci(num)) {
+            System.out.println(num + " pertence à sequência de Fibonacci!");
+        } else {
+            System.out.println(num + " não pertence à sequência de Fibonacci!");
+        }
+    }
+    
+    public static boolean verificarFibonacci(int num) {
+        int a = 0;
+        int b = 1;
+        int c = 0;
+        while (c < num) {
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return c == num;
+    }
+}
