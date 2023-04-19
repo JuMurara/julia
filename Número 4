@@ -1,0 +1,33 @@
+public class Distribuidora {
+    public static void main(String[] args) {
+        double total = 0.0;
+        double[] faturamento = {67_836.43, 36_678.66, 29_229.88, 27_165.48, 19_849.53};
+
+        // Calcula o total do faturamento mensal da distribuidora
+        for (double valor : faturamento) {
+            total += valor;
+        }
+
+        // Calcula o percentual de representação de cada estado e imprime o resultado
+        for (int i = 0; i < faturamento.length; i++) {
+            double percentual = (faturamento[i] / total) * 100.0;
+            System.out.printf("%s - %.2f%%\n", getNomeEstado(i), percentual);
+        }
+    }
+
+    // Retorna o nome do estado com base no índice do array de faturamento
+    private static String getNomeEstado(int indice) {
+        switch (indice) {
+            case 0:
+                return "SP";
+            case 1:
+                return "RJ";
+            case 2:
+                return "MG";
+            case 3:
+                return "ES";
+            default:
+                return "Outros";
+        }
+    }
+}
