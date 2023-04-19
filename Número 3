@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Distribuidora {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Leitura do tamanho do vetor (número de dias do mês)
+        System.out.print("Digite o número de dias do mês: ");
+        int n = sc.nextInt();
+        
+        // Criação do vetor de faturamento diário
+        double[] faturamento = new double[n];
+        
+        // Leitura dos valores de faturamento diário
+        for (int i = 0; i < n; i++) {
+            System.out.printf("Digite o faturamento do dia %d: ", i+1);
+            faturamento[i] = sc.nextDouble();
+        }
+        
+        // Cálculo do menor valor de faturamento diário
+        double menor = faturamento[0];
+        for (int i = 1; i < n; i++) {
+            if (faturamento[i] < menor) {
+                menor = faturamento[i];
+            }
+        }
+        System.out.printf("Menor faturamento diário: %.2f\n", menor);
+        
+        // Cálculo do maior valor de faturamento diário
+        double maior = faturamento[0];
+        for (int i = 1; i < n; i++) {
+            if (faturamento[i] > maior) {
+                maior = faturamento[i];
+            }
+        }
+        System.out.printf("Maior faturamento diário: %.2f\n", maior);
+        
+        // Cálculo da média mensal de faturamento diário
+        double media = 0;
+        for (int i = 0; i < n; i++) {
+            media += faturamento[i];
+        }
+        media /= n;
+        
+        // Cálculo do número de dias em que o faturamento diário foi superior à média mensal
+        int cont = 0;
+        for (int i = 0; i < n; i++) {
+            if (faturamento[i] > media) {
+                cont++;
+            }
+        }
+        System.out.printf("Número de dias com faturamento diário acima da média mensal: %d\n", cont);
+        
+        sc.close();
+    }
+}
